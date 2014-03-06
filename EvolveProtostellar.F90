@@ -1,6 +1,6 @@
 subroutine EvolveProtostellar(dt)
 
-   use StarProperties, only: star, Msun, Rsun, secyr
+   use protostellar_interface, only: star, Msun, Rsun, secyr
 
    implicit none
 

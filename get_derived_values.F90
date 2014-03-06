@@ -1,10 +1,12 @@
 subroutine get_derived_values(stage, mass, mdot, r, n, &             ! Input
                               Ld, Lint, Li, Lms, beta, dlogbeta, ag) ! Return
       
-   use MSFits, only: calculate_L_main_sequence
-   use polytools, only: getNumModels, &
+   use protostellar_interface, only: calculate_L_main_sequence, &
+                        getNumModels, &
                         get_model_table_cols, &
-                        get_beta_table_mvec
+                        get_beta_table_mvec, &
+                        Msun, Rsun, Lsun, secyr, &
+                        sigma, G, pi
 
    implicit none
    integer, intent(in)           :: stage
@@ -13,14 +15,7 @@ subroutine get_derived_values(stage, mass, mdot, r, n, &             ! Input
    double precision              :: Lh,Lms
    double precision, intent(out) :: beta,dlogbeta,ag
    double precision              :: dlogbbc
-   double precision, parameter   :: Msun = 1.98892E33         ! in grams
-   double precision, parameter   :: Rsun = 6.9550E10          ! in cm
-   double precision, parameter   :: Lsun = 3.839E33           ! in erg
-   double precision, parameter   :: secyr = 31556926.         ! seconds in a year
    double precision, parameter   :: fk = 0.5
-   double precision, parameter   :: sigma = 5.67040E-05
-   double precision, parameter   :: pi = 3.1416
-   double precision, parameter   :: G = 6.67428E-08
    double precision              :: mmdot
    ! Necessary variables for retrieving beta and dlogbeta
    integer                                     :: cols

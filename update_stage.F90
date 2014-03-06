@@ -1,7 +1,8 @@
 subroutine update_stage(mass, md, Ld, Lms, &                    ! Input
                          n, r, stage)                           ! In/Out
-  use polytools
-  use MSFits
+  
+  use protostellar_interface
+
   implicit none
   double precision                              :: mass, md, Ld, Lms, n, r
   integer                                       :: stage
@@ -13,11 +14,7 @@ subroutine update_stage(mass, md, Ld, Lms, &                    ! Input
   double precision                              :: t1,t2,tol,corepress
   double precision, dimension(:),   allocatable :: Dns, Bns, ns
   double precision, dimension(:,:), allocatable :: nDns, nBns
-  double precision, save                        :: pi = 3.14159265
-  double precision, save                        :: G = 6.674E-8
   double precision, parameter                   :: frad = 0.33
-  double precision, parameter                   :: Msun = 1.98892E33
-  double precision, parameter                   :: Rsun = 6.955E10
   external                                      :: corepress
 
   !/*********************************************************************
