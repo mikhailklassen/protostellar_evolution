@@ -13,6 +13,11 @@ subroutine update_D_mass(mdot, dt, Ld, &                        ! Input
     dmd = mdot*dt - 1.D-5 * Msun * (Ld/(15.*Lsun)) * (dt/secyr)
 
     md = md + dmd
+    
+    ! Once all deuterium is burned, it's gone
+    if (md < 0.D0) then
+        md = 0.D0
+    end if
 
     return
 

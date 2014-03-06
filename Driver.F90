@@ -43,17 +43,28 @@ program Driver
     time = 0.0
     maxtime = 1.D5 * secyr
 
+    ! Open file for writing
+    open(unit=1, file="protostellar_evolution.txt", action="write")
+    write(1,FMT=101) 'Stellar Mass','Accretion Rate','Stellar Radius','Polytropic Index',&
+                     'Deuterium Mass','Intrinsic Lum','Total Luminosity','Stage'
+
     ! Evolve the star
     do while(time < maxtime)
         call EvolveProtostellar(dt)
         star%mass = star%mass + star%mdot*dt
         time = time + dt
-        write(*,*) star%mass, star%mdot, star%radius, &
+        write(1,FMT=100) star%mass, star%mdot, star%radius, &
                         & star%polyn, star%mdeut, star%lint, &
                         & star%lum, star%stage
     end do
 
+    ! Close the file
+    close(1)
+
     print *, 'Simulation reach max time.'
 
+    ! Format statement
+    100 format (7(E17.10,3X),I6)
+    101 format (7(A17,3X),A6)
+
 end program Driver
-!'(7G12.5,I3)'
