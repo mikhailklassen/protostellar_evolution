@@ -53,4 +53,9 @@ update_luminosity.o : update_luminosity.F90
 	$(FC) $(CFLAGS) -c update_luminosity.F90
 
 clean :
-	rm -f *.o *.mod
+	@echo 'Deleting .o and .mod files'
+	$(RM) *.o *.mod
+
+realclean :
+	@echo 'Deleting .o and .mod files, and the binary executable'
+	$(RM) *.o *.mod protostellar_evolution
