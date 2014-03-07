@@ -13,7 +13,7 @@ This code was implemented as a module in [FLASH](http://flash.uchicago.edu) astr
 
 To compile the code, adjustments may need to be made to the `Makefile` to set the Fortran compiler and compiler flags. The main program code is in `Driver.F90`, which calls `EvolveProtostellar`. In `Driver.F90`, the timestep `dt` and accretion rate `mdot` are set. These can be changed manually to run the code with different accretion rates or with a different timestep size.
 
-When run, a file `protostellar_evolution.txt` is created and the stellar properties are written to this file as the protostar evolves with the simulation.
+When run, a file `protostellar_evolution.txt` is created and the stellar properties are written to this file as the protostar evolves with the simulation. All units are in the [CGS](http://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units) system, as is the standard in astrophysics.
 
 ## Precomputed Tables
 
