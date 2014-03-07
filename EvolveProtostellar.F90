@@ -36,6 +36,8 @@ subroutine EvolveProtostellar(dt)
          stage = 1
          r  = 2.5 * Rsun * (mmdot / 1.E-5)**(0.2)
          n  = 5 - 3 / (1.475 + 0.07 * log10(mmdot))
+         if ( n .LT. 1.5) n = 1.5
+         if ( n .GT. 3.0) n = 3.0
          md = mass
      endif
 
