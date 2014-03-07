@@ -93,6 +93,7 @@ subroutine update_stage(mass, md, Ld, Lms, &                    ! Input
   if (( stage .EQ. 3 ) .AND. ( Ld/Lms .GT. frad )) then
       stage = 4
       r = 2.1 * r
+      n = 3.0
   endif
 
   ! Finally, check if the radius has approached that of an equal-mass
